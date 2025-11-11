@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme - Bogdan Cretu</title>
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: var(--spacing-none);
+            font-family: Arial, sans-serif;
+            background-color: var(--color-background-primary);
+            line-height: var(--line-height-normal);
+        }
+
+        .main-content {
+            padding: var(--spacing-md);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-xlarge);
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--color-text-primary);
+            margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+            font-size: var(--font-size-large);
+            border-bottom: var(--border-width-thin) solid var(--color-border-primary);
+            padding-bottom: var(--spacing-xs);
+        }
+
+        .theme-form {
+            background-color: var(--color-background-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .color-group {
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background-color: var(--color-background-primary);
+            border-radius: var(--border-radius-small);
+        }
+
+        .color-label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: bold;
+            color: var(--color-text-primary);
+        }
+
+        .color-input-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+
+        .color-input {
+            width: 80px;
+            padding: var(--spacing-xs);
+            border: var(--border-width-thin) solid var(--color-border-primary);
+            border-radius: var(--border-radius-small);
+            font-family: monospace;
+        }
+
+        .color-preview {
+            width: 40px;
+            height: 40px;
+            border: var(--border-width-thin) solid var(--color-border-primary);
+            border-radius: var(--border-radius-small);
+            cursor: pointer;
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+            justify-content: center;
+        }
+
+        .btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: none;
+            border-radius: var(--border-radius-medium);
+            cursor: pointer;
+            font-size: var(--font-size-small);
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .btn-apply {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-apply:hover {
+            background-color: #45a049;
+        }
+
+        .btn-reset {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background-color: #da190b;
+        }
+
+        .color-help {
+            margin-top: var(--spacing-sm);
+            font-size: 0.9em;
+            color: var(--color-text-secondary);
+            text-align: center;
+        }
+
+        .color-help a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+
+        .color-help a:hover {
+            text-decoration: underline;
+        }
+
+        .preview-section {
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background-color: var(--color-background-secondary);
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .preview-element {
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border: var(--border-width-thin) solid var(--color-border-primary);
+            border-radius: var(--border-radius-small);
+        }
+
+        .preview-text {
+            color: var(--color-text-primary);
+        }
+
+        .preview-secondary {
+            color: var(--color-text-secondary);
+        }
+
+        .preview-background {
+            background-color: var(--color-background-primary);
+        }
+
+        .preview-shadow {
+            box-shadow: var(--shadow-small);
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"><nav class="navbar">
+    <div class="nav-container">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="clock.html" class="nav-link">Clock</a>
+            </li>
+            <li class="nav-item">
+                <a href="theme.html" class="nav-link">Theme</a>
+            </li>
+        </ul>
+    </div>
+</nav></div>
+
+    <div class="main-content">
+        <h1>Theme</h1>
+        
+        <div class="theme-form">
+            <h2>Color Customization</h2>
+            
+            <div class="color-group">
+                <label class="color-label">Background Primary</label>
+                <div class="color-input-group">
+                    <input type="text" id="background-primary" class="color-input" value="#f5f5f5" placeholder="#f5f5f5">
+                    <input type="color" id="background-primary-picker" class="color-picker" value="#f5f5f5">
+                    <div class="color-preview" style="background-color: #f5f5f5;" onclick="document.getElementById('background-primary-picker').click()"></div>
+                </div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">Background Secondary</label>
+                <div class="color-input-group">
+                    <input type="text" id="background-secondary" class="color-input" value="#bcbcd1" placeholder="#bcbcd1">
+                    <input type="color" id="background-secondary-picker" class="color-picker" value="#bcbcd1">
+                    <div class="color-preview" style="background-color: #bcbcd1;" onclick="document.getElementById('background-secondary-picker').click()"></div>
+                </div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">Text Primary</label>
+                <div class="color-input-group">
+                    <input type="text" id="text-primary" class="color-input" value="#333333" placeholder="#333333">
+                    <input type="color" id="text-primary-picker" class="color-picker" value="#333333">
+                    <div class="color-preview" style="background-color: #333333;" onclick="document.getElementById('text-primary-picker').click()"></div>
+                </div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">Text Secondary</label>
+                <div class="color-input-group">
+                    <input type="text" id="text-secondary" class="color-input" value="#666666" placeholder="#666666">
+                    <input type="color" id="text-secondary-picker" class="color-picker" value="#666666">
+                    <div class="color-preview" style="background-color: #666666;" onclick="document.getElementById('text-secondary-picker').click()"></div>
+                </div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">Border Primary</label>
+                <div class="color-input-group">
+                    <input type="text" id="border-primary" class="color-input" value="#dddddd" placeholder="#dddddd">
+                    <input type="color" id="border-primary-picker" class="color-picker" value="#dddddd">
+                    <div class="color-preview" style="background-color: #dddddd;" onclick="document.getElementById('border-primary-picker').click()"></div>
+                </div>
+            </div>
+
+            <div class="color-group">
+                <label class="color-label">Shadow Primary</label>
+                <div class="color-input-group">
+                    <input type="text" id="shadow-primary" class="color-input" value="#000000" placeholder="#000000">
+                    <input type="color" id="shadow-primary-picker" class="color-picker" value="#000000">
+                    <div class="color-preview" style="background-color: #000000;" onclick="document.getElementById('shadow-primary-picker').click()"></div>
+                </div>
+                <small>Note: Shadow color will be applied with transparency</small>
+            </div>
+
+            <div class="color-help">
+                <p>Need color codes? <a href="https://www.w3schools.com/colors/colors_picker.asp" target="_blank">Visit W3Schools Color Picker</a></p>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-apply" onclick="applyTheme()">Apply Theme</button>
+                <button class="btn btn-reset" onclick="resetTheme()">Reset to Default</button>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <h2>Theme Preview</h2>
+            <div class="preview-element preview-background">
+                <p class="preview-text">This is primary text with the selected colors</p>
+                <p class="preview-secondary">This is secondary text with the selected colors</p>
+            </div>
+            <div class="preview-element preview-shadow">
+                <p class="preview-text">This element has a shadow effect</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+        // Default color values
+        const defaultColors = {
+            'background-primary': '#f5f5f5',
+            'background-secondary': '#bcbcd1',
+            'text-primary': '#333333',
+            'text-secondary': '#666666',
+            'border-primary': '#dddddd',
+            'shadow-primary': '#000000'
+        };
+
+        // Sync color inputs with color pickers
+        function syncColorInputs() {
+            const colorInputs = document.querySelectorAll('.color-input');
+            const colorPickers = document.querySelectorAll('.color-picker');
+            const colorPreviews = document.querySelectorAll('.color-preview');
+
+            // Sync text input with color picker
+            colorInputs.forEach(input => {
+                const pickerId = input.id + '-picker';
+                const picker = document.getElementById(pickerId);
+                const preview = input.parentElement.querySelector('.color-preview');
+
+                input.addEventListener('input', function() {
+                    const color = this.value;
+                    if (isValidHexColor(color)) {
+                        picker.value = color;
+                        preview.style.backgroundColor = color;
+                    }
+                });
+
+                picker.addEventListener('input', function() {
+                    const color = this.value;
+                    input.value = color;
+                    preview.style.backgroundColor = color;
+                });
+            });
+        }
+
+        // Validate hex color
+        function isValidHexColor(color) {
+            return /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color);
+        }
+
+        // Apply theme to CSS variables
+        function applyTheme() {
+            const root = document.documentElement;
+            
+            // Get current values from inputs
+            const colors = {
+                'background-primary': document.getElementById('background-primary').value,
+                'background-secondary': document.getElementById('background-secondary').value,
+                'text-primary': document.getElementById('text-primary').value,
+                'text-secondary': document.getElementById('text-secondary').value,
+                'border-primary': document.getElementById('border-primary').value,
+                'shadow-primary': document.getElementById('shadow-primary').value
+            };
+
+            // Validate all colors
+            for (const [key, color] of Object.entries(colors)) {
+                if (!isValidHexColor(color)) {
+                    alert(`Invalid color format for ${key}: ${color}. Please use hex format like #ffffff`);
+                    return;
+                }
+            }
+
+            // Apply colors to CSS variables
+            root.style.setProperty('--color-background-primary', colors['background-primary']);
+            root.style.setProperty('--color-background-secondary', colors['background-secondary']);
+            root.style.setProperty('--color-text-primary', colors['text-primary']);
+            root.style.setProperty('--color-text-secondary', colors['text-secondary']);
+            root.style.setProperty('--color-border-primary', colors['border-primary']);
+            
+            // Apply shadow with transparency
+            const shadowColor = colors['shadow-primary'] + '1a'; // 10% transparency
+            root.style.setProperty('--color-shadow-primary', shadowColor);
+            
+            // Recalculate shadow variables
+            root.style.setProperty('--shadow-small', `0 2px 4px ${shadowColor}`);
+            root.style.setProperty('--shadow-medium', `0 4px 6px ${shadowColor}`);
+            root.style.setProperty('--shadow-large', `0 8px 16px ${shadowColor}`);
+
+            // Save to localStorage
+            localStorage.setItem('customTheme', JSON.stringify(colors));
+
+            alert('Theme applied successfully! The changes will persist across pages.');
+        }
+
+        // Reset theme to defaults
+        function resetTheme() {
+            const root = document.documentElement;
+            
+            // Reset CSS variables to defaults
+            for (const [key, value] of Object.entries(defaultColors)) {
+                root.style.removeProperty(`--color-${key}`);
+            }
+
+            // Reset shadow variables to defaults
+            root.style.removeProperty('--shadow-small');
+            root.style.removeProperty('--shadow-medium');
+            root.style.removeProperty('--shadow-large');
+
+            // Reset input values
+            for (const [key, value] of Object.entries(defaultColors)) {
+                document.getElementById(key).value = value;
+                document.getElementById(key + '-picker').value = value;
+                const preview = document.getElementById(key).parentElement.querySelector('.color-preview');
+                preview.style.backgroundColor = value;
+            }
+
+            // Remove from localStorage
+            localStorage.removeItem('customTheme');
+
+            alert('Theme reset to defaults!');
+        }
+
+        // Load saved theme on page load
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('customTheme');
+            if (savedTheme) {
+                const colors = JSON.parse(savedTheme);
+                const root = document.documentElement;
+
+                // Apply saved colors
+                for (const [key, color] of Object.entries(colors)) {
+                    root.style.setProperty(`--color-${key}`, color);
+                    document.getElementById(key).value = color;
+                    document.getElementById(key + '-picker').value = color;
+                    const preview = document.getElementById(key).parentElement.querySelector('.color-preview');
+                    preview.style.backgroundColor = color;
+                }
+
+                // Apply shadow with transparency
+                const shadowColor = colors['shadow-primary'] + '1a';
+                root.style.setProperty('--color-shadow-primary', shadowColor);
+                
+                // Recalculate shadow variables
+                root.style.setProperty('--shadow-small', `0 2px 4px ${shadowColor}`);
+                root.style.setProperty('--shadow-medium', `0 4px 6px ${shadowColor}`);
+                root.style.setProperty('--shadow-large', `0 8px 16px ${shadowColor}`);
+            }
+        }
+
+        // Initialize on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                syncColorInputs();
+                loadSavedTheme();
+            });
+        } else {
+            syncColorInputs();
+            loadSavedTheme();
+        }
+    </script>
+</body>
+</html>

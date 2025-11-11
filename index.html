@@ -106,14 +106,28 @@
     </style>
 </head>
 <body>
-    <div id="navbar-container"></div>
+    <div id="navbar-container"><nav class="navbar">
+    <div class="nav-container">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="clock.html" class="nav-link">Clock</a>
+            </li>
+            <li class="nav-item">
+                <a href="theme.html" class="nav-link">Theme</a>
+            </li>
+        </ul>
+    </div>
+</nav></div>
 
     <div class="main-content">
         <section id="home">
             <div class="header">
                 <img src="images/small-portrait-old.jpg" alt="Bogdan Cretu" class="portrait">
                 <h1>Bogdan Cretu</h1>
-                <p>Platform Engineer & Computer Science Graduate</p>
+                <p>Platform Engineer</p>
             </div>
         </section>
 
@@ -181,30 +195,35 @@
     </div>
 
     <script>
-        // Load navigation bar
-        fetch('components/navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-container').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error loading navigation bar:', error);
-                // Fallback: create basic navigation
-                document.getElementById('navbar-container').innerHTML = `
-                    <nav class="navbar">
-                        <div class="nav-container">
-                            <ul class="nav-menu">
-                                <li class="nav-item">
-                                    <a href="index.html" class="nav-link">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="clock.html" class="nav-link">Clock</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                `;
-            });
+        // Load saved theme on page load
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('customTheme');
+            if (savedTheme) {
+                const colors = JSON.parse(savedTheme);
+                const root = document.documentElement;
+
+                // Apply saved colors
+                for (const [key, color] of Object.entries(colors)) {
+                    root.style.setProperty(`--color-${key}`, color);
+                }
+
+                // Apply shadow with transparency
+                const shadowColor = colors['shadow-primary'] + '1a'; // 10% transparency
+                root.style.setProperty('--color-shadow-primary', shadowColor);
+                
+                // Recalculate shadow variables
+                root.style.setProperty('--shadow-small', `0 2px 4px ${shadowColor}`);
+                root.style.setProperty('--shadow-medium', `0 4px 6px ${shadowColor}`);
+                root.style.setProperty('--shadow-large', `0 8px 16px ${shadowColor}`);
+            }
+        }
+
+        // Initialize theme on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadSavedTheme);
+        } else {
+            loadSavedTheme();
+        }
     </script>
 </body>
 </html>
