@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bogdan Cretu - Personal Site</title>
     <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/navbar.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: var(--spacing-none);
-            padding: var(--spacing-md);
             font-family: Arial, sans-serif;
             background-color: var(--color-background-primary);
             line-height: var(--line-height-normal);
-            max-width: 800px;
-            margin: 0 auto;
         }
         
         .header {
             text-align: center;
             margin-bottom: var(--spacing-lg);
             padding: var(--spacing-md);
-            background-color: var(--color-background-secondary);
-            border-radius: var(--border-radius-medium);
-            box-shadow: var(--shadow-medium);
         }
         
         .portrait {
@@ -60,11 +61,8 @@
         }
         
         .job, .education {
-            background-color: var(--color-background-secondary);
             padding: var(--spacing-sm);
             margin-bottom: var(--spacing-sm);
-            border-radius: var(--border-radius-small);
-            border-left: var(--border-width-thick) solid var(--color-border-primary);
         }
         
         .job-title, .education-title {
@@ -86,10 +84,15 @@
             text-align: center;
             margin-top: var(--spacing-lg);
             padding: var(--spacing-md);
-            background-color: var(--color-background-secondary);
-            border-radius: var(--border-radius-medium);
-            border: var(--border-width-medium) solid var(--color-border-primary);
             font-style: italic;
+        }
+        
+
+        
+        .main-content {
+            padding: var(--spacing-md);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         ul {
@@ -103,13 +106,18 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="images/small-portrait-old.jpg" alt="Bogdan Cretu" class="portrait">
-        <h1>Bogdan Cretu</h1>
-        <p>Platform Engineer & Computer Science Graduate</p>
-    </div>
+    <div id="navbar-container"></div>
 
-    <section>
+    <div class="main-content">
+        <section id="home">
+            <div class="header">
+                <img src="images/small-portrait-old.jpg" alt="Bogdan Cretu" class="portrait">
+                <h1>Bogdan Cretu</h1>
+                <p>Platform Engineer & Computer Science Graduate</p>
+            </div>
+        </section>
+
+    <section id="experience">
         <h2>Professional Experience</h2>
         
         <div class="job">
@@ -137,7 +145,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="education">
         <h2>Education</h2>
         
         <div class="education">
@@ -166,8 +174,37 @@
         </ul>
     </section>
 
+    </div>
+
     <div class="construction-notice">
         <p>This site is currently under construction. Please check back soon for updates!</p>
     </div>
+
+    <script>
+        // Load navigation bar
+        fetch('components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error loading navigation bar:', error);
+                // Fallback: create basic navigation
+                document.getElementById('navbar-container').innerHTML = `
+                    <nav class="navbar">
+                        <div class="nav-container">
+                            <ul class="nav-menu">
+                                <li class="nav-item">
+                                    <a href="index.html" class="nav-link">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="clock.html" class="nav-link">Clock</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                `;
+            });
+    </script>
 </body>
 </html>
