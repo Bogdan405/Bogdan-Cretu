@@ -3,47 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bogdan-Cretu - Personal Site</title>
+    <title>Bogdan Cretu - Personal Site</title>
     <link rel="stylesheet" href="styles/variables.css">
     <style>
         body {
             margin: var(--spacing-none);
-            padding: var(--spacing-none);
+            padding: var(--spacing-md);
             font-family: Arial, sans-serif;
             background-color: var(--color-background-primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            line-height: var(--line-height-normal);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .construction-message {
+        .header {
             text-align: center;
-            background-color: var(--color-background-secondary);
+            margin-bottom: var(--spacing-lg);
             padding: var(--spacing-md);
+            background-color: var(--color-background-secondary);
             border-radius: var(--border-radius-medium);
             box-shadow: var(--shadow-medium);
+        }
+        
+        .portrait {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: var(--spacing-sm) auto;
             border: var(--border-width-medium) solid var(--color-border-primary);
         }
         
         h1 {
             color: var(--color-text-primary);
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-xlarge);
+        }
+        
+        h2 {
+            color: var(--color-text-primary);
+            margin: var(--spacing-md) 0 var(--spacing-sm) 0;
             font-size: var(--font-size-large);
+            border-bottom: var(--border-width-thin) solid var(--color-border-primary);
+            padding-bottom: var(--spacing-xs);
+        }
+        
+        h3 {
+            color: var(--color-text-primary);
+            margin: var(--spacing-sm) 0 var(--spacing-xs) 0;
+            font-size: var(--font-size-medium);
         }
         
         p {
             color: var(--color-text-secondary);
-            font-size: var(--font-size-small);
-            line-height: var(--line-height-normal);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .job, .education {
+            background-color: var(--color-background-secondary);
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            border-radius: var(--border-radius-small);
+            border-left: var(--border-width-thick) solid var(--color-border-primary);
+        }
+        
+        .job-title, .education-title {
+            font-weight: bold;
+            color: var(--color-text-primary);
+        }
+        
+        .company, .school {
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+        
+        .date {
+            color: var(--color-text-secondary);
+            font-size: 0.9em;
+        }
+        
+        .construction-notice {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background-color: var(--color-background-secondary);
+            border-radius: var(--border-radius-medium);
+            border: var(--border-width-medium) solid var(--color-border-primary);
+            font-style: italic;
+        }
+        
+        ul {
+            color: var(--color-text-secondary);
+            margin-left: var(--spacing-md);
+        }
+        
+        li {
+            margin-bottom: var(--spacing-xs);
         }
     </style>
 </head>
 <body>
-    <div class="construction-message">
-        <h1>Hello!</h1>
-        <p>This site is currently under construction.</p>
-        <p>Please check back soon for updates!</p>
+    <div class="header">
+        <img src="images/small-portrait-old.jpg" alt="Bogdan Cretu" class="portrait">
+        <h1>Bogdan Cretu</h1>
+        <p>Platform Engineer & Computer Science Graduate</p>
+    </div>
+
+    <section>
+        <h2>Professional Experience</h2>
+        
+        <div class="job">
+            <div class="job-title">Platform Engineer</div>
+            <div class="company">Signant Health</div>
+            <div class="date">May 2025 - Present | Iasi, Romania</div>
+        </div>
+        
+        <div class="job">
+            <div class="job-title">Test Automation Engineer</div>
+            <div class="company">Signant Health</div>
+            <div class="date">Jul 2022 - May 2025 (2 years 11 months) | Iasi, Romania</div>
+        </div>
+        
+        <div class="job">
+            <div class="job-title">Junior Automation Tester</div>
+            <div class="company">Endava</div>
+            <div class="date">Sep 2021 - Jul 2022 (11 months) | Iasi, Romania</div>
+        </div>
+        
+        <div class="job">
+            <div class="job-title">Automation Testing Intern</div>
+            <div class="company">Endava</div>
+            <div class="date">Jul 2021 - Sep 2021 (3 months) | Iasi, Romania</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        
+        <div class="education">
+            <div class="education-title">Master's Degree in Computer Science</div>
+            <div class="school">"Alexandru Ioan Cuza" University of Iași</div>
+            <div class="date">Oct 2021 - Jul 2023</div>
+            <p>Specialization: Computational Optimization and Artificial Intelligence</p>
+        </div>
+        
+        <div class="education">
+            <div class="education-title">Bachelor's Degree in Computer Science</div>
+            <div class="school">"Alexandru Ioan Cuza" University of Iași</div>
+            <div class="date">2018 - 2021</div>
+        </div>
+        
+        <h3>Course Highlights</h3>
+        <ul>
+            <li>Software Engineering</li>
+            <li>Data Structures and Algorithm Design</li>
+            <li>Operating Systems and Networking</li>
+            <li>Web Technologies</li>
+            <li>Artificial Intelligence and Machine Learning</li>
+            <li>Neural Networks</li>
+            <li>Probabilities and Statistics</li>
+            <li>Programming Languages: Python, C/C++, Java, R</li>
+        </ul>
+    </section>
+
+    <div class="construction-notice">
+        <p>This site is currently under construction. Please check back soon for updates!</p>
     </div>
 </body>
 </html>
